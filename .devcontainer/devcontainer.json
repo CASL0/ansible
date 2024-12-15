@@ -26,6 +26,7 @@
       "settings": {
         "editor.formatOnSave": true,
         "files.insertFinalNewline": true,
+        "ansible.python.interpreterPath": "/usr/local/bin/python",
         "[yaml]": {
           "editor.insertSpaces": true,
           "editor.tabSize": 2,
