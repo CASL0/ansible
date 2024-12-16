@@ -27,6 +27,10 @@
       "settings": {
         "editor.formatOnSave": true,
         "files.insertFinalNewline": true,
+        "files.associations": {
+          ".ansible-lint": "yaml",
+          ".yamllint": "yaml"
+        },
         "ansible.python.interpreterPath": "/usr/local/bin/python",
         "[yaml]": {
           "editor.insertSpaces": true,
