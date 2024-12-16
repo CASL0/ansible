@@ -1,3 +1,22 @@
 # SPDX-License-Identifier: MIT
 ---
-# tasks file for mariadb
+- name: (Debian/Ubuntu) Install mariadb
+  ansible.builtin.apt:
+    name:
+      - mariadb-server
+    state: present
+  become: true
+  when: ansible_os_family == "Debian"
+- name: (AlmaLinux/RHEL) Install mariadb
+  ansible.builtin.dnf:
+    name:
+      - mariadb-server
+    state: present
+  become: true
+  when: ansible_os_family == "RedHat"
+- name: Start mariadb
+  ansible.builtin.systemd:
+    name: mariadb
+    state: started
+    enabled: true
+  become: true
