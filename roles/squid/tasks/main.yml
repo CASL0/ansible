@@ -14,6 +14,23 @@
     state: present
   become: true
   when: ansible_facts["os_family"] == "RedHat"
+- name: Deploy allowlist file
+  ansible.builtin.template:
+    src: etc/squid/allowlist.txt.j2
+    dest: /etc/squid/allowlist.txt
+    owner: root
+    group: root
+    mode: "0644"
+  become: true
+- name: Deploy config file
+  ansible.builtin.template:
+    src: etc/squid/squid.conf.j2
+    dest: /etc/squid/squid.conf
+    owner: root
+    group: root
+    mode: "0644"
+  become: true
+  notify: Restart squid
 - name: Start squid
   ansible.builtin.systemd:
     name: squid
