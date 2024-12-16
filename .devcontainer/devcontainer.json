@@ -21,7 +21,8 @@
         "redhat.ansible",
         "oderwat.indent-rainbow",
         "redhat.vscode-yaml",
-        "WyattFerguson.jinja2-snippet-kit"
+        "WyattFerguson.jinja2-snippet-kit",
+        "esbenp.prettier-vscode"
       ],
       "settings": {
         "editor.formatOnSave": true,
@@ -32,6 +33,9 @@
           "editor.tabSize": 2,
           "editor.autoIndent": "keep",
           "editor.defaultFormatter": "redhat.vscode-yaml"
+        },
+        "[markdown]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
         }
       }
     }
