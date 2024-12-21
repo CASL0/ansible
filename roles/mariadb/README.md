@@ -1,38 +1,50 @@
-Role Name
-=========
+# MariaDB
 
-A brief description of the role goes here.
+[MariaDB](https://mariadb.org/)をインストールします。
 
-Requirements
-------------
+また、`mysql_secure_installation`に相当する処理を実行します。
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+## Requirements
 
-Role Variables
---------------
+サポート OS
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+- Debian
+- Ubuntu
+- AlmaLinux
+- Amazon Linux 2023
+- EL
 
-Dependencies
-------------
+## Role Variables
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+| ファイル名                      | 説明                   |
+| ------------------------------- | ---------------------- |
+| [main.yml](./defaults/main.yml) | mariadb-server の conf |
 
-Example Playbook
-----------------
+## Dependencies
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+None
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+## Example Playbook
 
-License
--------
+```yml
+- name: Install mariadb
+  hosts: db
+  roles:
+    - mariadb
+  vars:
+    mariadb_root_password: !vault |
+      $ANSIBLE_VAULT;1.1;AES256
+      62313365396662343061393464336163383764373764613633653634306231386433626436623361
+      6134333665353966363534333632666535333761666131620a663537646436643839616531643561
+      63396265333966386166373632626539326166353965363262633030333630313338646335303630
+      3438626666666137650a353638643435666633633964366338633066623234616432373231333331
+      6564
+```
 
-BSD
+## License
 
-Author Information
-------------------
+MIT
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+## Author Information
+
+https://github.com/CASL0
