@@ -1,2 +1,3 @@
 ---
-# defaults file for wikijs
+wikijs_user: wikijs
+wikijs_group: wikijs

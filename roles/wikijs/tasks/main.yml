@@ -1,2 +1,23 @@
 ---
-# tasks file for wikijs
+- name: Create group
+  ansible.builtin.group:
+    name: "{{ wikijs_group }}"
+    state: present
+  become: true
+- name: Create user
+  ansible.builtin.user:
+    name: "{{ wikijs_user }}"
+    group: "{{ wikijs_group }}"
+    comment: wikijs user
+    create_home: false
+    shell: /sbin/nologin
+    state: present
+  become: true
+- name: Create wikijs directory
+  ansible.builtin.file:
+    path: /usr/local/share/wikijs
+    state: directory
+    mode: "0744"
+    owner: "{{ wikijs_user }}"
+    group: "{{ wikijs_group }}"
+  become: true
