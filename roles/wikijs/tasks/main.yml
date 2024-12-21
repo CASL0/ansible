@@ -15,9 +15,17 @@
   become: true
 - name: Create wikijs directory
   ansible.builtin.file:
-    path: /usr/local/share/wikijs
+    path: "{{ wikijs_dir }}"
     state: directory
     mode: "0744"
+    owner: "{{ wikijs_user }}"
+    group: "{{ wikijs_group }}"
+  become: true
+- name: Download wikijs
+  ansible.builtin.unarchive:
+    src: https://github.com/requarks/wiki/releases/latest/download/wiki-js.tar.gz
+    dest: "{{ wikijs_dir }}"
+    remote_src: true
     owner: "{{ wikijs_user }}"
     group: "{{ wikijs_group }}"
   become: true
