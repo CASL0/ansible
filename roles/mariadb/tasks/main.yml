@@ -4,7 +4,7 @@
   ansible.builtin.apt:
     name:
       - mariadb-server
-      - python3-pip
+      - python3-pymysql
     state: present
   become: true
   when: ansible_os_family == "Debian"
@@ -12,7 +12,7 @@
   ansible.builtin.dnf:
     name:
       - mariadb-server
-      - python3-pip
+      - python3-pymysql
     state: present
   become: true
   when: ansible_os_family == "RedHat"
@@ -22,12 +22,17 @@
     state: started
     enabled: true
   become: true
-- name: Install required packages
-  ansible.builtin.pip:
-    name:
-      - PyMySQL
-    state: present
-- name: Deploy config file
+- name: (Debian/Ubuntu) Deploy config file
+  ansible.builtin.template:
+    src: etc/my.cnf.d/mariadb-server.cnf.j2
+    dest: /etc/mysql/mariadb.conf.d/50-server.cnf
+    owner: root
+    group: root
+    mode: "0644"
+  become: true
+  notify: Restart mariadb
+  when: ansible_os_family == "Debian"
+- name: (AlmaLinux/RHEL) Deploy config file
   ansible.builtin.template:
     src: etc/my.cnf.d/mariadb-server.cnf.j2
     dest: /etc/my.cnf.d/mariadb-server.cnf
@@ -36,3 +41,4 @@
     mode: "0644"
   become: true
   notify: Restart mariadb
+  when: ansible_os_family == "RedHat"
