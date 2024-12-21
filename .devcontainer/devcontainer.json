@@ -53,7 +53,8 @@
     }
   ],
   "remoteEnv": {
-    "ANSIBLE_CONFIG": "/workspaces/ansible/ansible.cfg"
+    "ANSIBLE_CONFIG": "/workspaces/ansible/ansible.cfg",
+    "ANSIBLE_VAULT_PASSWORD_FILE": "/workspaces/ansible/.vault_pass"
   }
 
   // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
