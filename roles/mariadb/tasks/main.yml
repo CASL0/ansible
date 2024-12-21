@@ -42,3 +42,6 @@
   become: true
   notify: Restart mariadb
   when: ansible_os_family == "RedHat"
+- name: Run mysql_secure_installation
+  ansible.builtin.include_tasks:
+    file: mysql_secure_installation.yml
