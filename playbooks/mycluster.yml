@@ -6,3 +6,6 @@
     kube_network_plugin: flannel
     kubeconfig_localhost: true
     kubectl_localhost: true
+    helm_enabled: true
+    metrics_server_enabled: true
+    cert_manager_enabled: true
