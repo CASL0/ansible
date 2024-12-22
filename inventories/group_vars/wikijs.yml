@@ -15,3 +15,11 @@ wikijs_db_password: !vault |
   3830333462356236300a646463383439373335663139663931313263396436623434613164323630
   3433
 wikijs_db_name: wikijs
+wikijs_bind_ip: 127.0.0.1
+nginx_servers:
+  - server_name: wiki.casl0.com
+    listen: 80
+    access_log: /var/log/nginx/wiki.access.log main
+    location:
+      - path: /
+        proxy_pass: http://localhost:3000/

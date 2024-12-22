@@ -25,3 +25,8 @@
   hosts: wikijs
   roles:
     - wikijs
+- name: Install nginx
+  hosts: wikijs
+  roles:
+    - nginx
+  become: true
