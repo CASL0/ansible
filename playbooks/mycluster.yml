@@ -24,6 +24,20 @@
         state: present
         values:
           config:
+            filters: |
+              [FILTER]
+                  Name kubernetes
+                  Match kube.*
+                  Merge_Log On
+                  Keep_Log Off
+                  K8S-Logging.Parser On
+                  K8S-Logging.Exclude On
+
+              [FILTER]
+                  Name nest
+                  Match kube.*
+                  Operation lift
+                  Nest_under kubernetes
             outputs: |
               [OUTPUT]
                   name syslog
@@ -32,6 +46,9 @@
                   port 514
                   mode udp
                   syslog_message_key log
+                  syslog_hostname_key namespace_name
+                  syslog_appname_key pod_name
+                  syslog_procid_key container_name
 
               [OUTPUT]
                   name syslog
