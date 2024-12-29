@@ -21,6 +21,10 @@ cd inventories/artifacts
 ./kubectl.sh get nodes
 ```
 
+## 構成
+
+<img src="https://raw.githubusercontent.com/CASL0/ansible/images/k8s.svg" />
+
 ## 物理
 
 | 名前                                                                                   | 単価      | 個数 | 備考                      |
