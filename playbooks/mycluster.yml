@@ -58,14 +58,3 @@
                   port 514
                   mode udp
                   syslog_message_key log
-- name: Install actions-runner-controller
-  hosts: kube_control_plane
-  tasks:
-    - name: Deploy actions-runner-controller
-      kubernetes.core.helm:
-        name: arc
-        chart_ref: oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller
-        chart_version: 0.10.1
-        namespace: arc-system
-        create_namespace: true
-        state: present
