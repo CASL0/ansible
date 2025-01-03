@@ -58,3 +58,22 @@
                   port 514
                   mode udp
                   syslog_message_key log
+- name: Install monitoring
+  hosts: kube_control_plane
+  tasks:
+    - name: Add prometheus chart repo
+      kubernetes.core.helm_repository:
+        name: prometheus-community
+        repo_url: https://prometheus-community.github.io/helm-charts
+    - name: Add grafana chart repo
+      kubernetes.core.helm_repository:
+        name: grafana
+        repo_url: https://grafana.github.io/helm-charts
+    - name: Install kube-prometheus-stack
+      kubernetes.core.helm:
+        name: kube-prometheus-stack
+        chart_ref: prometheus-community/kube-prometheus-stack
+        chart_version: 67.6.0
+        namespace: monitoring
+        create_namespace: true
+        state: present
