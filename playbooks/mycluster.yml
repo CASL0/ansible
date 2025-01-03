@@ -9,6 +9,18 @@
     helm_enabled: true
     metrics_server_enabled: true
     cert_manager_enabled: true
+    kube_proxy_strict_arp: true
+    metallb_enabled: true
+    metallb_speaker_enabled: true
+    metallb_namespace: metallb-system
+    metallb_config:
+      address_pools:
+        primary:
+          ip_range:
+            - 192.168.0.100-192.168.0.200
+          auto_assign: true
+      layer2:
+        - primary
 - name: Install fluent-bit
   hosts: kube_control_plane
   tasks:
