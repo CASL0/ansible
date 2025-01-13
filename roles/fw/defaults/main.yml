@@ -1,2 +1,7 @@
 ---
-# defaults file for fw
+fw_rules:
+  - rule: allow
+    proto: tcp
+    port: "22"
+    src: any
+    dest: any

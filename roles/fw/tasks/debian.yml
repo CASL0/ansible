@@ -11,6 +11,16 @@
     enabled: true
     state: started
   become: true
+- name: Add rules
+  community.general.ufw:
+    rule: "{{ item.rule }}"
+    port: "{{ item.port }}"
+    proto: "{{ item.proto }}"
+    from_ip: "{{ item.src }}"
+    to_ip: "{{ item.dest }}"
+    state: reloaded
+  loop: "{{ fw_rules }}"
+  become: true
 - name: Enable ufw
   community.general.ufw:
     state: enabled
