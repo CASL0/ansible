@@ -16,8 +16,8 @@
     rule: "{{ item.rule }}"
     port: "{{ item.port }}"
     proto: "{{ item.proto }}"
-    from_ip: "{{ item.src }}"
-    to_ip: "{{ item.dest }}"
+    from_ip: "{{ item.src | default('any') }}"
+    to_ip: "{{ item.dest | default('any') }}"
     state: reloaded
   loop: "{{ fw_rules }}"
   become: true
