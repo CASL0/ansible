@@ -1,2 +1,4 @@
 ---
-# tasks file for fw
+- name: (Debian/Ubuntu) Install ufw
+  ansible.builtin.include_tasks: debian.yml
+  when: ansible_os_family == "Debian"
