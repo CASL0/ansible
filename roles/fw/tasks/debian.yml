@@ -5,6 +5,12 @@
       - ufw
     state: present
   become: true
+- name: Start ufw
+  ansible.builtin.systemd:
+    name: ufw
+    enabled: true
+    state: started
+  become: true
 - name: Enable ufw
   community.general.ufw:
     state: enabled
