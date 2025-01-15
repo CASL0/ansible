@@ -1,0 +1,26 @@
+---
+fw_rules:
+  - rule: allow
+    proto: tcp
+    port: "22"
+    comment: ssh
+  - rule: allow
+    proto: tcp
+    port: "6443"
+    comment: Kubernetes API server
+  - rule: allow
+    proto: tcp
+    port: "2379:2380"
+    comment: etcd server client API
+  - rule: allow
+    proto: tcp
+    port: "10250"
+    comment: Kubelet API
+  - rule: allow
+    proto: tcp
+    port: "10259"
+    comment: kube-scheduler
+  - rule: allow
+    proto: tcp
+    port: "10257"
+    comment: kube-controller-manager
