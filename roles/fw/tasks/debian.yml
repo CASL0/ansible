@@ -18,6 +18,7 @@
     proto: "{{ item.proto }}"
     from_ip: "{{ item.src | default('any') }}"
     to_ip: "{{ item.dest | default('any') }}"
+    comment: "{{ item.comment | default('') }}"
     state: reloaded
   loop: "{{ fw_rules }}"
   become: true
