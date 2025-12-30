@@ -12,7 +12,7 @@
   // "forwardPorts": [],
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "pip3 install --user -r requirements.txt && ansible-galaxy install -r requirements.yml",
+  "postCreateCommand": "sudo apt update && sudo apt-get install -y sshpass && pip3 install --user -r requirements.txt && ansible-galaxy install -r requirements.yml",
 
   // Configure tool-specific properties.
   "customizations": {
