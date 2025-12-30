@@ -167,3 +167,4 @@ roles/**/inventory
 
 # 依存ロールは除外
 roles/nginxinc.nginx
+.ansible
