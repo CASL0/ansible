@@ -44,7 +44,8 @@
         name: fluent-bit
         chart_ref: fluent/fluent-bit
         chart_version: 0.48.3
-        namespace: kube-system
+        namespace: logging
+        create_namespace: true
         state: present
         values:
           config:
