@@ -28,6 +28,7 @@
     ingress_nginx_configmap:
       map-hash-bucket-size: "128"
       ssl-protocols: "TLSv1.2 TLSv1.3"
+    gateway_api_enabled: true
 - name: Install firewall
   hosts: kube_control_plane,kube_node
   roles:
