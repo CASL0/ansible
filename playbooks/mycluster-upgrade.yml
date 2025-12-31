@@ -1,0 +1,5 @@
+---
+- name: Upgrade Kubernetes
+  ansible.builtin.import_playbook: kubernetes_sigs.kubespray.upgrade_cluster
+  vars:
+    kube_version: v1.31.9
