@@ -62,3 +62,15 @@ cd inventories/artifacts
 | [TP-Link TL-SG105PE](https://www.amazon.co.jp/dp/B08GDC61NS)                           | 6,667 円  | 1    | PoE 給電用                |
 | [microSD カード 64GB](https://www.amazon.co.jp/dp/B07DVJ86SS)                          | 980 円    | 3    |                           |
 | [HDMI (メス) - micro HDMI (オス) 変換アダプタ](https://www.amazon.co.jp/dp/B01017VGR2) | 970 円    | 1    | OS の初期化・ssh の設定用 |
+
+## アップグレード
+
+以下の playbook を使用して、Kubernetes をアップグレードする。
+
+```sh
+ansible-playbook playbooks/mycluster-upgrade.yml --become
+```
+
+> [!WARNING]
+> `coredns` の `PodDisruptionBudget` は `maxUnavailable` が30%に設定されているため、アップグレード中の drain に失敗する。
+> 事前に当該 `PodDisruptionBudget` を編集しておく必要がある。
