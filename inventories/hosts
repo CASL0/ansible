@@ -1,12 +1,12 @@
 [kube_control_plane]
-192.168.0.5
+master001 ansible_host=192.168.0.5
 
 [etcd:children]
 kube_control_plane
 
 [kube_node]
-192.168.0.6
-192.168.0.7
+worker001 ansible_host=192.168.0.6
+worker002 ansible_host=192.168.0.7
 
 [k8s_cluster:children]
 kube_node
