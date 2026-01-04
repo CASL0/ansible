@@ -2,7 +2,7 @@
 collections:
   - name: https://github.com/kubernetes-sigs/kubespray
     type: git
-    version: v2.28.1
+    version: v2.29.1
 roles:
   - name: nginxinc.nginx
     version: 0.25.0
