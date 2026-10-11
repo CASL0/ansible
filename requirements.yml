@@ -5,4 +5,4 @@ collections:
     version: v2.29.1
 roles:
   - name: nginxinc.nginx
-    version: 0.25.0
+    version: 0.26.0
